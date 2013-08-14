@@ -16,8 +16,12 @@ function init() {
     $("a[href^='item']").each(function() {
         var url = window.location.origin + "/" + encodeURIComponent($(this).attr('href'));
         var fbscript = " | <a rel='nofollow' href='http://www.facebook.com/sharer/sharer.php?s=100&u=" + url + "' onclick=\"(function(e){u='" + url + "';t=document.title;window.open('http://www.facebook.com/sharer.php?u='+encodeURIComponent(u)+'&t='+encodeURIComponent(t),'sharer','toolbar=0,status=0,width=626,height=436');return false;})(event)\" target='_blank'>fb</a>";
-
-        $(this).parent().append(fbscript);
+        var parent = $(this).parent();
+        if(parent.hasClass("subtext")) {
+            parent.append(fbscript);
+        } else {
+            parent.parent().next().find(".subtext").append(fbscript);
+        }
     });
 
 
