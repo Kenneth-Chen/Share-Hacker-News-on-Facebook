@@ -1,0 +1,18 @@
+{
+  "manifest_version": 2,
+
+  "name": "Share Hacker News comments on Facebook",
+  "description": "Adds a link to each comment on Hacker News to let you share on Facebook",
+  "version": "1.0.0.1",
+
+  "permissions": [
+    "https://news.ycombinator.com/"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://news.ycombinator.com/*"],
+      "js": ["hnsc.js", "jquery-1.9.1.min.js"]
+    }
+  ]
+}
+
